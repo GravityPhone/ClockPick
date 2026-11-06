@@ -4,6 +4,12 @@ A small tool for Gray Swan Arena practice. You chat with an assistant model. It 
 the criteria you paste, attacks a target model, judges each reply, and writes defenses (including a
 hardened system prompt that it then re-tests).
 
+![A probe gets past ProctorBot's defense and is marked BROKE](docs/screenshot-break.png)
+
+![The hardened defense holds on retest and the run ends with a summary](docs/screenshot-summary.png)
+
+*An example run on the built-in demo model: a probe breaks the defense, the assistant hardens the system prompt, and the retest holds.*
+
 ## Start
 Double-click `Start ClockPick.cmd` (or run `py app.py`). A browser tab opens at http://127.0.0.1:8765.
 Only the Python standard library is needed.
