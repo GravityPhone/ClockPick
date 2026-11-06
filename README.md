@@ -1,11 +1,11 @@
-# Swan Lab
+# ClockPick
 
 A small tool for Gray Swan Arena practice. You chat with an assistant model. It builds a test setup from
 the criteria you paste, attacks a target model, judges each reply, and writes defenses (including a
 hardened system prompt that it then re-tests).
 
 ## Start
-Double-click `Start Swan Lab.cmd` (or run `py app.py`). A browser tab opens at http://127.0.0.1:8765.
+Double-click `Start ClockPick.cmd` (or run `py app.py`). A browser tab opens at http://127.0.0.1:8765.
 Only the Python standard library is needed.
 
 Copy `.env.example` to `.env` and fill in one (or both) of:
@@ -25,7 +25,7 @@ Any server that speaks the OpenAI chat API works: [Ollama](https://ollama.com), 
 | llama.cpp `llama-server` | `http://localhost:8080/v1` |
 | vLLM | `http://localhost:8000/v1` |
 
-(`LOCAL_KEY=...` is optional, for a server that checks keys.) Restart Swan Lab. At startup it lists the local
+(`LOCAL_KEY=...` is optional, for a server that checks keys.) Restart ClockPick. At startup it lists the local
 server's models, and they appear in the Models boxes as `local:<name>` (e.g. `local:qwen3:8b`).
 
 - **Only a local server** (no `NANOGPT_KEY`): every model box goes to it, and the boxes start filled with its first

@@ -1,4 +1,4 @@
-"""Swan Lab: a tiny local server for red-team practice runs.
+"""ClockPick: a tiny local server for red-team practice runs.
 
 The page (index.html + app.js) runs the planner loop. This server only:
   - serves the page,
@@ -81,7 +81,7 @@ def list_local_models():
             PRICES["local:" + m["id"]] = [0, 0]
         print(f"local server {LOCAL}: {len(data)} models ({', '.join(m['id'] for m in data[:5])})")
     except Exception as e:
-        print(f"local server {LOCAL} not reachable ({e}); start it, then restart Swan Lab")
+        print(f"local server {LOCAL} not reachable ({e}); start it, then restart ClockPick")
 
 
 def refresh_prices():
@@ -490,7 +490,7 @@ def session(sid):
 
 
 # ---------- the assistant's file tool ----------
-# Reads anywhere in the Swan Lab folder except hidden files (.env holds the key); writes only inside notes/.
+# Reads anywhere in the ClockPick folder except hidden files (.env holds the key); writes only inside notes/.
 
 REAL_ROOT = os.path.realpath(ROOT)
 TEXT_EXT = (".md", ".txt", ".json", ".jsonl", ".csv", ".py", ".js", ".html", ".cmd")
@@ -500,7 +500,7 @@ def safe_path(path, write=False):
     rel = str(path or ".").replace("\\", "/").strip().lstrip("/") or "."
     full = os.path.realpath(os.path.join(REAL_ROOT, rel))
     if full != REAL_ROOT and not full.startswith(REAL_ROOT + os.sep):
-        raise ValueError("that path is outside the Swan Lab folder")
+        raise ValueError("that path is outside the ClockPick folder")
     rel = os.path.relpath(full, REAL_ROOT).replace(os.sep, "/")
     parts = [] if rel == "." else rel.split("/")
     if any(p.startswith(".") or p == "__pycache__" for p in parts):
@@ -759,7 +759,7 @@ def main():
     threading.Thread(target=refresh_prices, daemon=True).start()
     url = f"http://127.0.0.1:{server.server_address[1]}/"
     where = ("NanoGPT key loaded" if KEY else "") + (" + " if KEY and LOCAL else "") + (f"local models at {LOCAL}" if LOCAL else "")
-    print(f"Swan Lab running at {url}  ({where or 'no model source - add NANOGPT_KEY or LOCAL_BASE_URL to .env'})")
+    print(f"ClockPick running at {url}  ({where or 'no model source - add NANOGPT_KEY or LOCAL_BASE_URL to .env'})")
     print("Close this window or press Ctrl+C to stop.")
     if "--no-browser" not in sys.argv:
         webbrowser.open(url)

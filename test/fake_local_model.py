@@ -1,12 +1,12 @@
 """A stand-in for a local model server (Ollama-style OpenAI API) with canned replies.
 
-It lets you check Swan Lab's local-model setup on a machine that can't run a real model:
+It lets you check ClockPick's local-model setup on a machine that can't run a real model:
   py test/fake_local_model.py [port]      (default 11434, Ollama's port)
-then put LOCAL_BASE_URL=http://127.0.0.1:11434/v1 in .env and start Swan Lab.
+then put LOCAL_BASE_URL=http://127.0.0.1:11434/v1 in .env and start ClockPick.
 
 It answers GET /v1/models and POST /v1/chat/completions (streamed or not). It tells the three roles apart by
 their system prompt and plays a short scripted run: the assistant sends one probe, judges it HELD, and finishes;
-the target refuses; the judge says HELD. Every request is printed so you can see what Swan Lab sent.
+the target refuses; the judge says HELD. Every request is printed so you can see what ClockPick sent.
 """
 import json
 import sys
